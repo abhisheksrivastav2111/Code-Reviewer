@@ -1,63 +1,269 @@
 * {
-  margin: 0%;
-  padding: 0%;
   box-sizing: border-box;
 }
 
-html,
-body,
-#root {
-  height: 100%;
-  width: 100%;
-}
-
-main {
-  height: 100%;
-  width: 100%;
-  padding: 1.5rem;
-  display: flex;
-  gap: 1rem;
-}
-
-main .left,
-main .right {
-  height: 100%;
-  flex-basis: 50%;
-  border-radius: 0.7rem;
-}
-
-main .left {
-  background-color: #000000;
-  position: relative;
-}
-
-.left .code,
-.code pre,
-.code pre code {
-  height: 100%;
-  width: 100%;
+html, body {
   margin: 0;
-  border-radius: 0.7rem;
-  background-color: #0c0c0c;
-}
-
-main .left .review {
-  position: absolute;
-  bottom: 1rem;
-  right: 1rem;
-  background-color: rgb(219, 219, 255);
-  color: #000000;
-  padding: 0.5rem 2rem;
-  font-weight: 500;
-  cursor: pointer;
-  user-select: none;
-  border-radius: 0.7rem;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden; /* ✅ Prevent horizontal scroll */
 }
 
 
-main .right {
-  background-color: #343434;
+.landing-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* or center, based on your layout need */
+  min-height: 100vh;
+  width: 100vw; /* ✅ ensures full width of the viewport */
+  background: linear-gradient(135deg, #1d1d1d, #3f3f3f);
+  color: white;
+  overflow-x: hidden;
+  padding: 0; /* make sure there's no internal space */
+}
+
+
+/* === NAVBAR === */
+.navbar {
+  background-color: #1d1d1d;
+  color: white;
+  display: flex;
+  justify-content: space-between;
   padding: 1rem 2rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.logo {
   font-size: 1.5rem;
-  overflow: auto;
+  font-weight: bold;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  margin-left: 1rem;
+  font-size: 1rem;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+/* === LANDING PAGE === */
+
+
+/* === INTRO SECTION === */
+.intro {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3rem 5%;
+  gap: 2rem;
+  max-width: 1200px; /* ✅ Keeps content in check */
+  margin: auto;      /* ✅ Center it horizontally */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+.intro-text, .intro-img {
+  flex: 1 1 45%;
+  min-width: 280px;
+  box-sizing: border-box;
+}
+
+.intro-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.intro-img img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+/* Fix for .get-started button */
+.get-started {
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  background-color: #00c896;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin-top: 1.5rem;
+}
+
+.get-started:hover {
+  background-color: #00a678;
+}
+
+/* === FOOTER === */
+.footer {
+  background-color: #1d1d1d;
+  color: white;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+/* === MAIN LAYOUT === */
+.main-layout {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .main-layout {
+    flex-direction: row;
+    height: 100vh;
+  }
+}
+
+.editor-panel, .review-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  color: #0057e7;
+  font-size: 0.95rem;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.back-btn:hover {
+  color: #003f9e;
+}
+
+.review-btn {
+  margin-top: 1rem;
+  padding: 0.6rem 1.5rem;
+  font-size: 1rem;
+  background-color: #0057e7;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: background 0.3s;
+}
+
+.review-btn:hover {
+  background-color: #0041b3;
+}
+
+.review-box {
+  background: #282c34;
+  color: white;
+  padding: 1rem;
+  border-radius: 8px;
+  overflow-y: auto;
+  height: 550px;
+  width: 900px;
+ 
+}
+
+.review-panel h2 {
+  margin-bottom: 0.5rem;
+  
+}
+
+/* === MOBILE RESPONSIVENESS === */
+@media (max-width: 768px) {
+  .intro {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .intro-text, .intro-img {
+    max-width: 100%;
+  }
+
+  .intro-img img {
+    max-height: 250px;
+  }
+}
+
+
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.popup-content {
+  background: #1e1e1e;
+  padding: 30px;
+  border-radius: 16px;
+  text-align: center;
+  color: #fff;
+  position: relative;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+
+.popup-content h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.levels {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.level-btn {
+  background: #2d2d2d;
+  color: #fff;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.level-btn:hover {
+  background: #444;
+}
+
+.close-popup {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  color: #aaa;
+  cursor: pointer;
 }

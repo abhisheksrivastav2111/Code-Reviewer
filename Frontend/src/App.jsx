@@ -62,12 +62,13 @@ const chooseLevel = (level) => {
   }
 
  
-  const response = await axios.post('http://localhost:3000/ai/get-review', { code, level: selectedLevel });
+  const response = await axios.post(`${process.env.REACT_APP_API_URL}/ai/get-review`, { code, level: selectedLevel });
   setReview(response.data);
 }
 
   async function ExplainCode() {
-    const response = await axios.post('http://localhost:3000/ai/explain-code', { code , level: selectedLevel });
+   const response = await axios.post(`${process.env.REACT_APP_API_URL}/ai/explain-code`, { code, level: selectedLevel });
+
     setReview(response.data);
   }
 
